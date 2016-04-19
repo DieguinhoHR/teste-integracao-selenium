@@ -6,7 +6,7 @@ import static org.junit.Assert.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class LoginTest {
+public class NavigationLinksTest {
   private WebDriver driver;
   private String baseUrl;
   private boolean acceptNextAlert = true;
@@ -15,16 +15,21 @@ public class LoginTest {
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "https://portal.code.education/";
+    baseUrl = "http://sites.code.education/";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testLogin() throws Exception {
-    driver.get(baseUrl + "login");
-    driver.findElement(By.id("username")).clear();
-    driver.findElement(By.id("username")).sendKeys("diego_henriquerodrigues@hotmail.com");
-    driver.findElement(By.id("_submit")).click();
+  public void testNavigationLinks() throws Exception {
+    driver.get(baseUrl + "/home-code/");
+    driver.findElement(By.cssSelector("a > img.full-width")).click();
+    driver.findElement(By.xpath("(//img[contains(@src,'http://sites.code.education/wp-content/uploads/2015/10/mais-detalhes.png')])[4]")).click();
+    driver.findElement(By.xpath("(//img[contains(@src,'http://sites.code.education/wp-content/uploads/2015/10/mais-detalhes.png')])[7]")).click();
+    driver.findElement(By.xpath("(//img[contains(@src,'http://sites.code.education/wp-content/uploads/2015/10/mais-detalhes.png')])[2]")).click();
+    driver.findElement(By.xpath("(//img[contains(@src,'http://sites.code.education/wp-content/uploads/2015/10/mais-detalhes.png')])[5]")).click();
+    driver.findElement(By.xpath("(//img[contains(@src,'http://sites.code.education/wp-content/uploads/2015/10/mais-detalhes.png')])[8]")).click();
+    driver.findElement(By.xpath("(//img[contains(@src,'http://sites.code.education/wp-content/uploads/2015/10/mais-detalhes.png')])[3]")).click();
+    driver.findElement(By.xpath("(//img[contains(@src,'http://sites.code.education/wp-content/uploads/2015/10/mais-detalhes.png')])[6]")).click();
   }
 
   @After
