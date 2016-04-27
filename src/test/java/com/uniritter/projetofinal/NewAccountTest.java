@@ -38,13 +38,14 @@ public class NewAccountTest {
     driver.findElement(By.cssSelector("span")).click();                   
 
     WebElement e = driver.findElement(By.name("main_programming_language"));
-    
+            
     Select language = new Select(e);
-            
+  
     language.selectByIndex(0);
-    language.getFirstSelectedOption().getAttribute("value");
-            
-    driver.findElement(By.xpath("//input[@value='Create Free Account']")).click();    
+        
+    String recebe = language.getFirstSelectedOption().getAttribute("value"); 
+
+    driver.findElement(By.xpath("//input[@value='Create Free Account']")).submit();   
   }
 
   @After
