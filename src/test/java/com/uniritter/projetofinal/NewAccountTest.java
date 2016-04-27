@@ -7,26 +7,44 @@ import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.*;
 
-public class NavigationLinksTest {
+import com.thoughtworks.selenium.webdriven.commands.Click;
+
+public class NewAccountTest {
   private WebDriver driver;
-  private String baseUrl;
   private boolean acceptNextAlert = true;
   private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "https://www.heroku.com/home";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
   }
 
   @Test
-  public void testNavigationLinks() throws Exception {
-    driver.get(baseUrl);
-    driver.findElement(By.linkText("Products")).click();
-    driver.findElement(By.linkText("Sign up")).click();    
+  public void testNewAccount() throws Exception {
+    driver.get("https://signup.heroku.com/?c=70130000001x9jFAAQ");
+    
+    driver.findElement(By.id("first_name")).clear();
+    driver.findElement(By.id("first_name")).sendKeys("diego");
+    driver.findElement(By.id("last_name")).clear();
+    driver.findElement(By.id("last_name")).sendKeys("henrique");
+    driver.findElement(By.id("invitation_email")).clear();
+    driver.findElement(By.id("invitation_email")).sendKeys("dev.diegorodrigues@gmail.com");
+    driver.findElement(By.id("company")).clear();
+    driver.findElement(By.id("company")).sendKeys("deliver it");
+           
+    driver.findElement(By.cssSelector("span")).click();                   
+
+    WebElement e = driver.findElement(By.name("main_programming_language"));
+    
+    Select language = new Select(e);
+            
+    language.selectByIndex(0);
+    language.getFirstSelectedOption().getAttribute("value");
+            
+    driver.findElement(By.xpath("//input[@value='Create Free Account']")).click();    
   }
 
   @After
