@@ -1,73 +1,29 @@
 package com.uniritter.projetofinal;
 
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
 import org.junit.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
+
+import com.uniritter.pageObjects.HomePage;
 
 public class NavigationLinksTest {
   private WebDriver driver;
-  private String baseUrl;
-  private boolean acceptNextAlert = true;
-  private StringBuffer verificationErrors = new StringBuffer();
 
   @Before
-  public void setUp() throws Exception {
-    driver = new FirefoxDriver();
-    baseUrl = "https://www.heroku.com/home";
-    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+  public void setUp() {
+      driver = new FirefoxDriver();     
   }
 
   @Test
-  public void testNavigationLinks() throws Exception {
-    driver.get(baseUrl);
-    driver.findElement(By.linkText("Products")).click();
-    driver.findElement(By.linkText("Sign up")).click();    
-  }
-
+  public void shouldHaveNavigateProducts() {
+	  HomePage onHomePage = new HomePage(driver);
+	  onHomePage = onHomePage.navigatePage();
+	  onHomePage.clickOnProduct();
+	  onHomePage.clickOnSignUp();    
+  } 
+  
   @After
-  public void tearDown() throws Exception {
-    driver.quit();
-    String verificationErrorString = verificationErrors.toString();
-    if (!"".equals(verificationErrorString)) {
-      fail(verificationErrorString);
-    }
-  }
-
-  private boolean isElementPresent(By by) {
-    try {
-      driver.findElement(by);
-      return true;
-    } catch (NoSuchElementException e) {
-      return false;
-    }
-  }
-
-  private boolean isAlertPresent() {
-    try {
-      driver.switchTo().alert();
-      return true;
-    } catch (NoAlertPresentException e) {
-      return false;
-    }
-  }
-
-  private String closeAlertAndGetItsText() {
-    try {
-      Alert alert = driver.switchTo().alert();
-      String alertText = alert.getText();
-      if (acceptNextAlert) {
-        alert.accept();
-      } else {
-        alert.dismiss();
-      }
-      return alertText;
-    } finally {
-      acceptNextAlert = true;
-    }
-  }
+  public void tearDown() {
+	  driver.close();   
+  } 
 }
