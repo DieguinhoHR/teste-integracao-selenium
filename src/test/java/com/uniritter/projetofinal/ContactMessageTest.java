@@ -12,8 +12,7 @@ public class ContactMessageTest extends AbstractWebDrivarTest {
 	}
 	
 	@Test
-	public void shouldSendContactMessage() {		
-	
+	public void shouldSendContactMessage() {	
 		ContactPage onContactPage = homePage.clickOnContact();
 //		ContactResultPage onResultPage = onContactPage.fillFormWithData().submitForm();
 //		
