@@ -1,7 +1,5 @@
 package com.uniritter.pageObjects;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -21,7 +19,8 @@ public class HomePage extends AbstractPage {
 	}
 	
 	public LoginPage clickOnLogin() {
-		driver.findElement(By.linkText("Log in")).click();		
+		//driver.findElement(By.linkText("Log in")).click();		
+		driver.findElement(By.cssSelector("a[href*='https://id.heroku.com']")).click();
 		return new LoginPage(driver);
 	}
 }
