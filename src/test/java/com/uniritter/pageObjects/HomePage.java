@@ -21,7 +21,7 @@ public class HomePage extends AbstractPage {
 	}
 	
 	public LoginPage clickOnLogin() {
-		driver.findElement(By.linkText("Log in")).click();
+		driver.findElement(By.linkText("Log in")).click();		
 		return new LoginPage(driver);
 	}
 }
