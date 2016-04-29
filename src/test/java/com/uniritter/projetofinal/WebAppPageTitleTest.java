@@ -9,13 +9,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class WebAppPageTitleTest {
-	protected WebDriver driver; 
-	
+public class WebAppPageTitleTest extends AbstractWebDrivarTest {
 	@Before
-	public void setUp() {
-		driver = new FirefoxDriver();		
-		driver.navigate().to("https://www.heroku.com/");
+	public void testSetUp() {
+		homePage.navigatePage();		
 	}	
 	
 	@Test
@@ -28,10 +25,5 @@ public class WebAppPageTitleTest {
 	public void shouldHavePageDocumentation() {				
 		driver.findElement(By.id("doc-head")).click();			
 		assertTrue(driver.getTitle().equals("Heroku Dev Center"));
-	}
-	
-	@After
-	public void tearDown() {
-		driver.close();
-	}
+	}	
 }

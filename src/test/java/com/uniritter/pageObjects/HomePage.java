@@ -18,8 +18,8 @@ public class HomePage extends AbstractPage {
 		return new ProductPage(driver);
 	}
 	
-	public SignUpPage clickOnSignUp() {
-		driver.findElement(By.linkText("Sign up")).click();
-		return new SignUpPage(driver);
+	public LoginPage clickOnLogin() {
+		driver.findElement(By.linkText("Log in")).click();
+		return new LoginPage(driver);
 	}
 }

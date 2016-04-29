@@ -1,38 +1,22 @@
 package com.uniritter.projetofinal;
 
-import static org.junit.Assert.*;
-
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.uniritter.pageObjects.ContactPage;
-import com.uniritter.pageObjects.ContactResultPage;
-import com.uniritter.pageObjects.HomePage;
 
-public class ContactMessageTest {
-	WebDriver driver; 
-	
+public class ContactMessageTest extends AbstractWebDrivarTest {		
 	@Before
-	public void setUp() {
-		driver = new FirefoxDriver();		
-	}	
-		
+	public void testSetUp() {
+		homePage.navigatePage();
+	}
+	
 	@Test
-	public void shouldSendContactMessage() {
-		HomePage onHomePage = new HomePage(driver);
-		onHomePage = onHomePage.navigatePage();
-		ContactPage onContactPage = onHomePage.clickOnContact();
+	public void shouldSendContactMessage() {		
+	
+		ContactPage onContactPage = homePage.clickOnContact();
 //		ContactResultPage onResultPage = onContactPage.fillFormWithData().submitForm();
 //		
 //		assertTrue(onResultPage.getConfirmationMessage().contains("Check your email now to confirm your sign-up."));		
-	}
-	
-	@After
-	public void tearDown() {
-		driver.close();
-	}
-	
+	}	
 }
