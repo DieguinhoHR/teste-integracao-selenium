@@ -14,8 +14,8 @@ public class LoginPageTest extends AbstractWebDrivarTest {
 	
 	@Test
 	public void shouldLoginPage() {
-		LoginPage loginPage = homePage.clickOnLogin();
-		loginPage.fillFormWithData();
+//		LoginPage loginPage = homePage.clickOnLogin();
+//		loginPage.fillFormWithData();
 	}
 
 }
